@@ -9,7 +9,7 @@
 <nav class="navbar navbar-expand-sm navbar-dark" style=" color: #EEE7E8;">
   <div style="align-items: center; justify-content: center;" class="container-fluid">
     <div class="flexrow">
-      <h2 class="nav-title">PS70 Fall 2024</h2>
+      <h2 class="nav-title">PS70 Spring 2025</h2>
     </div>
     <div class="navbar-nav">
       <h4><a class="nav-link" href="../index.html">Home</a></h4>
@@ -28,6 +28,20 @@
 
 
 <h4>Assignment: Minimum Viable Product for Final Project</h4>
+
+The minimum viable product for my automatic music engraver was supposed to be able to display keys pressed
+on music staff, and also be able to play notes. I was able to create two keys that play two different notes,
+and it shows them on the tft lcd.
+
+<image style = "width: 75%" src = "./MVP_pic.png" alt = "week 8 placeholder"> </image>
+
+There are still issues with the sound and the display. Currently, the arduino is only able to output a single
+frequency at a time, but I would like to be able to play chords with multiple frequencies. I will have to 
+sum waveforms and create an array to play multiple notes at once.
+
+Additionlly, the screen flickers due to the loop in the code. I will have to restructure it into classes,
+and use millis() to keep track of active notes so that I won't have to constantly be resetting the screen
+every loop.
 
 
 </div>

@@ -23,41 +23,51 @@
 <div class="textcontainer">
 <p class="margin"></p>
 
-<h3>Final Project Idea 1: Room occupancy indicator</h3>
+<h3>Automatic Music Engraver</h3>
+To help with my music composition assignments for my Intro to Music Composition class,
+I decided to build an automatic music engraver. This is a device that will convert any melody 
+played into notes on a staff with the right pitches, rests and note lengths. I initially tried using a tft LCD
+but it turned out to be too slow and hard to code the music notation. Thus, I switched to using the esp32 to 
+send the states of the 12 keys as serial input which would then be read using pyserial, and used by a python Program
+to generate the visualisation using matplotlib.
 <br></br>
-In my apartment, we have 4 roommates and one bathroom, and I often find myself getting to the bathroom only to find it occupied, and have to 
-keep walking back and forth from my room to check if it is unoccupied.
-It would be nice to have an app or display in my room so that I can know if the bathroom is occupied or not.
-I thought have have a magnetic sensor at the door to detect if it is closed or open, or a light sensor to tell if the light is on.
-I would also record this data to track the bathroom usage pattern my apartment to figure out the best
-time for me to adjust my wake up time and morning routine.
-
+The hardest part about the project was the sound engineering. Single notes sounded fine, but when two notes were played simulatenously,
+the speaker would stutter. I initially thought it was an issue with the loop slowing down, but after probing with the oscilloscope,
+I realized that the wave forms sent to the speaker had varying amplitudes, with beat nodes. I realized that this is what you get when you
+add multiple sine waves of different frequencies. I then decided to add 2-3 harmonics for each key which made the sound intensity smoother,
+but the timbre was still coarse and unpleasant. That was still better than the stutter, so I left it at that.
+<br></br>
+The python program uses an array to store the key states over 4 musical measures, and approximates key presses to 1/4, 1/8, or 1/16th notes.
+They are displayed on a treble cleff.
+<br></br>
+Limit switches were aligned beneath the 3d printed keys for the springy feel. Everything was soldered to a protoboard.
 <br></br>
 
-<h3>Final Project Idea 2: Electric bike lock</h3>
-<br></br>
-Recently, my bikelock got stuck because water and dirt entered the key hole and froze. I had to use wd40 to clear it out.
+<h4>Demo Videos</h4>
 
-An electric bike lock that would lock and unlock based on a tap password would allow me to quickly unlock the bike 
-would save me a lot of time, and I wouldn't have to take my gloves off in the cold.
+<p>Playing the whole chromatic scale:</p>
+<video width="75%" controls>
+  <source src="./whole-chromatic-scale.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
-<br></br>
+<p>Playing some chords:</p>
+<video width="75%" controls>
+  <source src="./chords.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
-<h3>Final Project Idea 3: Automatic Music Engraver</h3>
-<br></br>
-I am taking MUS 4 Intro to Music Composition this semester, and my first assignment was to compose 8 bars 
-of a melody. The most challenging part for me was writing down my musical idea in the western notation
-system. I hope to create an electronic keyboard with just one octave which would allow me to play any melody
-and instantly convert it to notes on a staff with the right pitches, rests and note lengths.
+<p>Playing Happy Birthday:</p>
+<video width="75%" controls>
+  <source src="./happy-bday.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
-The keyboard would also play the right pitches, and as an extension, I could make the keys light up when pressed.
-
-There might be an LCD display to show the notes on the staff as they are being recorded, and the device may also 
-include a metronome. Maybe it could also play back the melody.
-
-There will be code to approximate the note lengths by rounding up/down for the duration of presses and pauses.
-
-<br></br>
+<p>Playing my own melody:</p>
+<video width="75%" controls>
+  <source src="./my_melody.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 </div>
 </xmp>
